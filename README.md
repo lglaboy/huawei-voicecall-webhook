@@ -40,7 +40,7 @@ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o app cmd/app.go
 docker build -t huawei-voice-notification:v5 .
 ```
 
-# 启动
+## 启动
 
 ```shell
 # 创建本地挂载目录
