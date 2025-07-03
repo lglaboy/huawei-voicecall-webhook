@@ -1,0 +1,62 @@
+# 华为voice配置,必填,通过华为云平台获取
+huawei:
+  voicecall:
+    # APP接入地址,购买服务时下发,请替换为实际值
+    base_url: https://xxx.cn-north-1.xxxx.cn:443
+    # 语音通知应用的appKey,购买服务时下发,请替换为实际值
+    appKey: xxxxx
+    # 语音通知应用的appSecret,购买服务时下发,请替换为实际值
+    appSecret: xxxxx
+    # 固话号码
+    displayNbr: "+86xxxxxxxxxx"
+    # 告警消息模板
+    templateId: xxxxx
+
+server:
+  #  服务启动端口
+  port: 8080
+
+# 系统配置
+common:
+  # 通知呼叫状态接收URL
+  statusUrl: http://xxxxx.xxxxx.xxxxx/status
+  # 白名单，禁止所有环境，只允许白名单列表通过
+  # 黑名单，允许所有环境，只禁止黑名单列表不通过
+  # model: whitelist or blacklist
+  # 可选，默认允许所有环境，即黑名单策略
+  model: blacklist
+  forbiddenPeriod:
+    # 指定每天几点到几点禁止发送语音通知
+    startTime: "02:00:00"
+    endTime: "06:00:00"
+  # 每天的一个时间点进行检查并发送消息
+  dailyCheckTime: "06:00:00"
+
+datastore:
+  ttl: 10m # 10m 数据有效期 10分钟
+  cleanup_interval: 1h  # 1h 每小时执行一次清理
+
+
+# 白名单
+white_list:
+  - xxxxx1-prod
+  - xxxxx2-prod
+
+# 黑名单
+black_list:
+  - yyyyy1-prod
+  - yyyyy2-prod
+
+# 运维组排班表
+schedule:
+  file: schedule.csv
+
+# 选填，环境名对应负责人
+env_director:
+  - env: test-prod
+    name: xxx
+
+# 选填，领导发送列表
+lead:
+  - name: xx
+    phone: xxxxxxxxx
